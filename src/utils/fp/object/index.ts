@@ -1,0 +1,5 @@
+export * from './mergeRight'
+export * from './pick'
+export * from './get'
+export * from './prop'
+export * from './set'
