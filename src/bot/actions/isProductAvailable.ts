@@ -1,34 +1,29 @@
 import puppeteer from "puppeteer"
-import { Partners, MazeConfig, PartnerConfig } from '../PartnersConfig'
-import { sendMessageToDiscord } from './sendMessageToDiscord'
+import Discord from 'discord.js'
+import { Partners, MazeConfig, PartnerConfig, ArtWalkConfig } from '../PartnersConfig'
 
-export const isProductAvailable = (partner: Partners, product?: string) => {
+export const isProductAvailable = async (partner: Partners, product: string, message: Discord.Message) => {
 
-  const config: PartnerConfig = MazeConfig;
+  const config: PartnerConfig = partner === "ArtWalk" ? ArtWalkConfig : MazeConfig
 
-  (async () => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(`${config.siteSearchURL}${product?.toLowerCase().replace(' ', '%20')}`)
     const result = await page.evaluate((config: PartnerConfig) => {
       const shoes: any = []
       document.querySelectorAll(`${config.productLinkContainer.type}${config.productLinkContainer.selector} ${config.buttonLink.type}${config.buttonLink.selector}`)
-          .forEach((item) => shoes.push(`https://maze.com.br${item.getAttribute('href')}`))
+          .forEach((item) => shoes.push(`${item.getAttribute('href')}`))
       return shoes
-    }, MazeConfig as any)
+    }, config as any)
     browser.close()
 
     if (result.length === 0) {
-      sendMessageToDiscord(`Meu chapa, nao está tendo nenhum ${product} na ${partner}, te aviso quando chegar :)`)
+      message.reply(`Meu chapa, nao está tendo nenhum ${product} na ${partner}, te aviso quando chegar :)`)
     } else {
-      let messageToSend = `
-        Aqui estao os ${product} na ${partner}, meu chapa!
-        ${result}
-      `
-      sendMessageToDiscord(messageToSend)
+      message.reply(`Aqui estao os ${product} na ${partner}, meu chapa!`)
+      Array(result).forEach(item => message.reply(`${item.toString().split(',').join('\n')}`))
     }
-    return 0
-  })();
 
+    return 
 }
  

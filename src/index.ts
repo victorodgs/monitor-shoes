@@ -4,6 +4,7 @@ import Discord  from 'discord.js'
 import config from '../discordConfig.json'
 
 const Client = new Discord.Client();
+Client.login(config.BOT_TOKEN);
 
 Client.on("message", function(message) {
     const prefix = '!'
@@ -12,43 +13,45 @@ Client.on("message", function(message) {
   
     const commandBody = message.content.slice(prefix.length);
     const args = commandBody.split(' ');
-    const command = args.toString().toLowerCase()
 
     if(message.content === "!NikeDunkMaze") {
-        isProductAvailable(Partners.Maze, 'Nike Dunk')
-        console.log('oi')
+        isProductAvailable(Partners.Maze, 'Nike Dunk', message)
+    }
+
+    if(message.content === "!NikeJordanArtWalk") {
+        isProductAvailable(Partners.ArtWalk, 'Nike Jordan', message)
     }
 
     if(message.content === "!NikeJordan1Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 1')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 1', message)
     }
 
     if(message.content === "!NikeJordan2Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 2')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 2', message)
     }
 
     if(message.content === "!NikeJordan3Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 3')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 3', message)
     }
 
     if(message.content === "!NikeJordan4Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 4')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 4', message)
     }
 
     if(message.content === "!NikeJordan5Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 5')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 5', message)
     }
 
     if(message.content === "!NikeJordan6Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 6')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 6', message)
     }
 
     if(message.content === "!NikeJordan11Maze") {
-        isProductAvailable(Partners.Maze, 'Nike Jordan 11')
+        isProductAvailable(Partners.Maze, 'Nike Jordan 11', message)
     }
 
   });
 
-  Client.login(config.BOT_TOKEN);
+
 
 
