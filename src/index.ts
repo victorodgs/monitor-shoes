@@ -6,6 +6,7 @@ import config from '../discordConfig.json'
 const Client = new Discord.Client();
 Client.login(config.BOT_TOKEN);
 
+
 Client.on("message", function(message) {
     const prefix = '!'
     if (message.author.bot) return;
@@ -19,7 +20,7 @@ Client.on("message", function(message) {
     }
 
     if(message.content === "!NikeJordanArtWalk") {
-        isProductAvailable(Partners.ArtWalk, 'Nike Jordan', message)
+        isProductAvailable(Partners.ArtWalk, 'Tenis Nike Jordan', message)
     }
 
     if(message.content === "!NikeJordan1Maze") {
