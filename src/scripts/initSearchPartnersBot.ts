@@ -43,15 +43,15 @@
     })
 
 
-    if(fastDeepEqual(searchResults, lastSearchResults)) {
+    if(fastDeepEqual(normalizedResults, lastSearchResults)) {
         console.log(`passou`)
         return 
     } else {
         updateState({
-            actualSearch: searchResults,
+            actualSearch: normalizedResults,
             actualPartnerInSearch: Partners.Maze
         })
-        
+
         discordChannel.send('\:rotating_light: OLHA OS JORDAN NA MAZE, MEUS CHAPAS \:rotating_light:')
         normalizedResults.forEach((item: string) => discordChannel.send(item))
     }
