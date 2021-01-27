@@ -1,10 +1,19 @@
 import { Partners } from './bot/PartnersConfig'
 import { isProductAvailable } from './bot/actions/isProductAvailable'
-import Discord  from 'discord.js'
+import { initSearchPartnersBot } from './scripts/initSearchPartnersBot'
+import { Client as DCClient}  from 'discord.js'
 import config from '../discordConfig.json'
+import useSharedSharedActions  from './bot/state/shared/actions'
 
-const Client = new Discord.Client();
+const Client = new DCClient();
 Client.login(config.BOT_TOKEN);
+
+Client.on("ready", () => {
+    const channel = Client.channels.cache.find(channel => channel.id == '792163237680250922')
+    setInterval(() => {
+        initSearchPartnersBot(channel)
+    }, 20000)   
+});  
 
 
 Client.on("message", function(message) {

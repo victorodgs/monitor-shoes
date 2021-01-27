@@ -20,4 +20,28 @@ export const MazeConfig: PartnerConfig = {
           indicadorType: HTMLSelectorTypes.id, // criar um enumerador
           unavailableIndicator: 'button-disabled', // criar um enumerador
         },
+        itemsToSearch: {
+          NikeJordan: [
+          'https://www.maze.com.br/busca?n=Nike%20jordan%201&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%203&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%204&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%205&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%206&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%207&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%208&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%209&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%2010&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%2011&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%2012&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan%2013&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/busca?n=Nike%20jordan&mdf=undefined&mdv=undefined'
+        ],
+        NikeDunkMid: [
+          'https://www.maze.com.br/busca?n=Nike%20dunk%20mid&mdf=undefined&mdv=undefined',
+          'https://www.maze.com.br/categoria/nike/jordan',
+          'https://www.maze.com.br/categoria/nike/air-force',
+          'https://www.maze.com.br/categoria/adidas/yeezy',
+          'https://www.maze.com.br/categoria/sale'
+        ]
+       }
 }

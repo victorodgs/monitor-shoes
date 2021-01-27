@@ -1,7 +1,6 @@
 import puppeteer from "puppeteer"
 
-export const initPuppeteerBrowser = async (): Promise<puppeteer.Page> => {
+export const initPuppeteerBrowser = async () => {
     const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    return {...Promise.resolve(page), close: browser.close}
+    return Promise.resolve(browser)
 }

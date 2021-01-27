@@ -4,6 +4,8 @@ export enum HTMLSelectorTypes {
 }
 
 export const ItemsToSearch = [
-    'Tenis Nike Dunk',
-    'Tenis Nike Jordan',
+    'https://www.maze.com.br/categoria/nike/jordan',
+    'https://www.maze.com.br/categoria/nike/air-force',
+    'https://www.maze.com.br/categoria/adidas/yeezy',
+    'https://www.maze.com.br/categoria/sale',
 ]

@@ -30,4 +30,5 @@ export interface PartnerConfig {
       email: string,
       phone: string //document.getElementById ('user_phone'),
     },
+    itemsToSearch?: any
   }

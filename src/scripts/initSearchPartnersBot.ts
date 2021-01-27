@@ -2,28 +2,62 @@
  import Discord  from 'discord.js'
  import config from '../../discordConfig.json'
  import { isProductAvailable } from '../bot/actions/isProductAvailable'
- import { Partners, ItemsToSearch } from '../bot/PartnersConfig'
+ import { Partners, MazeConfig } from '../bot/PartnersConfig'
+ import useSharedSharedActions  from '../bot/state/shared/actions'
+ import fastDeepEqual  from 'fast-deep-equal'
  
  const Client = new Discord.Client();
  Client.login(config.BOT_TOKEN);
 
- export const initSearchPartnersBot = () => {
-    const partnersToSearch = Object.keys(Partners)
-    const searchResults: any = [];
+ export const initSearchPartnersBot = async (discordChannel: any) => {
+    let searchResults: any = [];
+    let normalizedResults: any = []
+    const { updateState, state } = useSharedSharedActions()
+    const lastSearchResults = state.actualSearch
 
-    // Create Partner Section to recieve a list of results categorized :)
-    (() => {
-        partnersToSearch.forEach(partner => searchResults.push({partnerName: partner, results: []}))
-    })()
-
-    partnersToSearch.forEach((partner, index) => {
-        ItemsToSearch.forEach(item => {
-            searchResults[index]['results'].push(isProductAvailable(partner as Partners, item))
-        })
+    let searchPromises: any = []
+ 
+    await MazeConfig.itemsToSearch.NikeJordan.forEach(async (item: any, index: number) => {
+       searchPromises.push(
+         isProductAvailable(Partners.Maze, item, null, 'all')
+       )
     })
 
-    console.log(searchResults)
+    await Promise.all(searchPromises).then(res => {
+        searchResults.push(res)
+    }).catch(err => { throw new Error("Erro ao Buscar")}) 
+
+    await searchResults.forEach((item: any) => {
+        if (item !== null) {
+            item.forEach((productList: any) => {
+            if(productList !== null) {
+                productList.forEach((product: any) => {
+                    if(!normalizedResults.includes(product)) {
+                        normalizedResults.push(product)
+                    }
+                }) 
+            }
+            
+            })
+        }
+    })
+
+
+    if(fastDeepEqual(searchResults, lastSearchResults)) {
+        console.log(`passou`)
+        return 
+    } else {
+        updateState({
+            actualSearch: searchResults,
+            actualPartnerInSearch: Partners.Maze
+        })
+        
+        discordChannel.send('\:rotating_light: OLHA OS JORDAN NA MAZE, MEUS CHAPAS \:rotating_light:')
+        normalizedResults.forEach((item: string) => discordChannel.send(item))
+    }
+    
  }
+
  
  
  
