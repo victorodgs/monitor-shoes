@@ -1,31 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2018",                          
+    "target": "es6",                          
     "module": "commonjs",                    
-    "lib": ["es6", "DOM"],
     "allowJs": true,
     "outDir": "build",                          
     "rootDir": "src",
     "strict": true,         
     "noImplicitAny": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "paths": {
-      "@assets": ["assets"],
-      "@assets/*": ["assets/*"],
-      "@components": ["components"],
-      "@components/*": ["components/*"],
-      "@containers": ["containers"],
-      "@containers/*": ["containers/*"],
-      "@pages": ["pages"],
-      "@pages/*": ["pages/*"],
-      "@services": ["services"],
-      "@services/*": ["services/*"],
-      "@utils": ["utils"],
-      "@utils/*": ["utils/*"],
-      "@store": ["store"],
-      "@store/*": ["store/*"],
-      "@/*": ["*"]
-    }
-  }
+  },
+  "lib": ["es2015"],
 }

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon"
+    "start-dev": "nodemon",
+    "start-prod": "tsc && node build/src/index.js",
+    "dev": "tsc --watch & nodemon build"
   },
   "author": "Victor Rodriguez",
   "license": "ISC",
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@types/node": "^14.14.16",
     "@types/puppeteer": "^5.4.2",
+    "@types/ws": "^7.4.0",
     "nodemon": "^2.0.6",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"

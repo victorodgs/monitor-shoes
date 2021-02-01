@@ -1,5 +1,6 @@
  
  import Discord  from 'discord.js'
+ //@ts-ignore
  import config from '../../discordConfig.json'
  import { isProductAvailable } from '../bot/actions/isProductAvailable'
  import { Partners, MazeConfig } from '../bot/PartnersConfig'
